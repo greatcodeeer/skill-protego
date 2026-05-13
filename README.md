@@ -11,44 +11,7 @@
 [![Dimensions: 15](https://img.shields.io/badge/Detection_Dimensions-15-orange.svg)](#what-it-does)
 [![Read-only](https://img.shields.io/badge/Read--only-yes-brightgreen.svg)](#read-only-by-design)
 
-**English** · [简体中文](#中文简介)
-
----
-
-## 中文简介
-
-**Protego（呼神护卫）** 是一个为 AI 编码代理设计的只读安全审计 skill —— 同时支持 **Claude Code** 和 **Codex**。用任何语言对 AI 说一句"帮我做个安全扫描"，它就会：
-
-1. 自动识别项目用的 **10 种包管理生态**（npm / PyPI / Cargo / Maven / CocoaPods / Swift PM / RubyGems / Composer / pub / NuGet），monorepo 混用也全覆盖
-2. 在 **15 个攻击面维度**上做静态扫描 —— 依赖供应链投毒、硬编码密钥、危险代码 sink、`.env` 入库、git 历史泄密、MCP 工具中毒、恶意 Claude Code skill、恶意 Codex prompt 等
-3. **用你的母语**输出报告，🔴 阻断 / 🟡 警告 分级，每条结论附原因与处置建议
-4. **全程只读**，发现问题只给建议，不会自动改你一行代码（任何修复都要你单独确认）
-
-### 为什么做这个
-
-2026-05-09 [TanStack 供应链投毒事件](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem)：通过 `pull_request_target` + cache poisoning + OIDC memdump 三连击，**42 个包共 84 个版本**被植入恶意代码。`@tanstack/react-query` 周下载量数千万。这是 12 个月内第 7 起重大 npm 投毒事件（TanStack、axios、shai-hulud 蠕虫、lottiefiles、Ultralytics 在 PyPI、XZ Utils 后门，再加上 LLM 时代的 MCP 中毒和恶意 skill）。
-
-频次到这个程度，**得有一句话就能在本地跑的审计**——不要 API key、不要上传代码、不要配置文件。Protego 就是这个一句话。
-
-### 30 秒安装
-
-```bash
-git clone https://github.com/greatcodeeer/protego.git ~/.protego
-
-# Claude Code 用户
-ln -sf ~/.protego ~/.claude/skills/protego
-
-# Codex 用户
-ln -sf ~/.protego/codex/protego.md ~/.codex/prompts/protego.md
-```
-
-之后对 Claude 或 Codex 说："**帮我做个安全扫描**" / "**安全审计**" / "**检测下漏洞**" —— 任何意思相近的中文都能触发。Protego 会先确认、再施咒、最后用中文回报。
-
-### 注意
-
-- 启发式扫描：覆盖 90%+ 常见攻击模式，**会有少量误报**，每条 finding 都需要人工判断
-- 不替代专业扫描器（Snyk / Socket.dev / Phylum / Aikido），生产关键项目建议**并行使用**
-- License: Apache 2.0
+**English** · [简体中文 ↓](#中文简介)
 
 ---
 
@@ -260,3 +223,42 @@ Issues and PRs welcome — especially:
 ## License
 
 Apache License 2.0 — see [LICENSE.txt](LICENSE.txt).
+
+---
+
+## 中文简介
+
+**Protego（呼神护卫）** 是一个为 AI 编码代理设计的只读安全审计 skill —— 同时支持 **Claude Code** 和 **Codex**。用任何语言对 AI 说一句"帮我做个安全扫描"，它就会：
+
+1. 自动识别项目用的 **10 种包管理生态**（npm / PyPI / Cargo / Maven / CocoaPods / Swift PM / RubyGems / Composer / pub / NuGet），monorepo 混用也全覆盖
+2. 在 **15 个攻击面维度**上做静态扫描 —— 依赖供应链投毒、硬编码密钥、危险代码 sink、`.env` 入库、git 历史泄密、MCP 工具中毒、恶意 Claude Code skill、恶意 Codex prompt 等
+3. **用你的母语**输出报告，🔴 阻断 / 🟡 警告 分级，每条结论附原因与处置建议
+4. **全程只读**，发现问题只给建议，不会自动改你一行代码（任何修复都要你单独确认）
+
+### 为什么做这个
+
+2026-05-09 [TanStack 供应链投毒事件](https://tanstack.com/blog/npm-supply-chain-compromise-postmortem)：通过 `pull_request_target` + cache poisoning + OIDC memdump 三连击，**42 个包共 84 个版本**被植入恶意代码。`@tanstack/react-query` 周下载量数千万。这是 12 个月内第 7 起重大 npm 投毒事件（TanStack、axios、shai-hulud 蠕虫、lottiefiles、Ultralytics 在 PyPI、XZ Utils 后门，再加上 LLM 时代的 MCP 中毒和恶意 skill）。
+
+频次到这个程度，**得有一句话就能在本地跑的审计**——不要 API key、不要上传代码、不要配置文件。Protego 就是这个一句话。
+
+### 30 秒安装
+
+```bash
+git clone https://github.com/greatcodeeer/protego.git ~/.protego
+
+# Claude Code 用户
+ln -sf ~/.protego ~/.claude/skills/protego
+
+# Codex 用户
+ln -sf ~/.protego/codex/protego.md ~/.codex/prompts/protego.md
+```
+
+之后对 Claude 或 Codex 说："**帮我做个安全扫描**" / "**安全审计**" / "**检测下漏洞**" —— 任何意思相近的中文都能触发。Protego 会先确认、再施咒、最后用中文回报。
+
+### 注意
+
+- 启发式扫描：覆盖 90%+ 常见攻击模式，**会有少量误报**，每条 finding 都需要人工判断
+- 不替代专业扫描器（Snyk / Socket.dev / Phylum / Aikido），生产关键项目建议**并行使用**
+- License: Apache 2.0
+
+[↑ 返回顶部](#protego--multi-language-security-audit-shield-charm)
