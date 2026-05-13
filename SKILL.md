@@ -5,7 +5,7 @@ license: Apache-2.0
 metadata:
   author: codeeer
   version: "1.0.0"
-  homepage: https://github.com/greatcodeeer/protego
+  homepage: https://github.com/greatcodeeer/skill-protego
 ---
 
 # Protego — Multi-Language Security Audit Shield Charm

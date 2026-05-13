@@ -44,7 +44,7 @@ Supports **npm / PyPI / RubyGems / CocoaPods / Swift PM / Maven / Cargo / Compos
 ### 1. Clone
 
 ```bash
-git clone https://github.com/greatcodeeer/protego.git ~/.protego
+git clone https://github.com/greatcodeeer/skill-protego.git ~/.protego
 ```
 
 Then wire it into whichever agent(s) you use:
@@ -244,7 +244,7 @@ Apache License 2.0 — see [LICENSE.txt](LICENSE.txt).
 ### 30 秒安装
 
 ```bash
-git clone https://github.com/greatcodeeer/protego.git ~/.protego
+git clone https://github.com/greatcodeeer/skill-protego.git ~/.protego
 
 # Claude Code 用户
 ln -sf ~/.protego ~/.claude/skills/protego
